@@ -1,0 +1,32 @@
+<% provide(:title, @author.first_name) %>
+<% if !flash[:success].blank? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= flash[:success]%>.
+    </div>
+   
+  </div>
+<% end %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <table class="table table-bordered">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Created</th>
+          <th>Updated</th>
+        </tr>
+         <tr>   
+          <td><%= @author.first_name %></td>
+          <td><%= @author.last_name %></td>
+          <td><%= @author.created_at %></td>
+          <td><%= @author.updated_at %></td>
+       </tr>
+      </table>
+    
+    <%= link_to '<< Back to List', :action => 'index' %>
+    
+    </section>
+  </aside>
+</div

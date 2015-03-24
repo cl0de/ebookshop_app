@@ -1,0 +1,24 @@
+<% provide(:title, 'New Author') %>
+<h1>Enter new Author</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@author) do |f| %>
+    
+    
+      
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+  
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+      
+      <%= f.submit "Enter new Author", class: "btn btn-primary" %>
+    
+    <% end %>
+
+    
+    <%= link_to '<< Back', :action => 'index' %>
+    
+  </div>
+</div>
