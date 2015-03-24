@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root               'pages#home'
+  
+  root  'static_pages#home'
   
   match ':controller(/:action(/:id))', :via => :get
   
