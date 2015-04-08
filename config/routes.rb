@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   
-  get 'authors/new'
+  #get 'authors/new'
 
   root  'static_pages#home'
   resources :authors
-  match ':controller(/:action(/:id))', :via => :get
+  resources :books
+  match ':controller(/:action(/:id))', :via => [:get, :post]
   
   #get 'static_pages/home'
 

@@ -1,0 +1,38 @@
+<% provide(:title, @book.authors.name) %>
+<% if !flash[:success].blank? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= flash[:success]%>.
+    </div>
+   
+  </div>
+<% end %>
+<div class="row">
+  <aside class="col-md-6">
+    <section class="user_info">
+      <table class="table table-bordered">
+        <tr>
+          <th>Title</th>
+          <th>Author Name</th>
+          <th>ISBN</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Cover image</th>
+        </tr>
+         <tr>   
+          <td><%= @book.title %></td>
+          <td><%= @book.authors.collect{|author| author.name }.join(', ') %></td>
+          <td><%= @book.isbn %></td>
+          <td><%= @book.description %></td>
+          <td><%= @book.price %></td> 
+          <dt><%= image_tag @book.picture.url if @book.picture? %></dt>
+          
+          
+       </tr>
+      </table>
+    
+    <%= link_to("Edit",{:action => 'edit', :id => @book.id}) %> | <%= link_to '<< Back to List', :action => 'index' %>
+    
+    </section>
+  </aside>
+</div
