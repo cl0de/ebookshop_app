@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
-   # @book_pages, @books = paginate :books, :per_page => 10
   end
   def show
     @book = Book.find(params[:id])
