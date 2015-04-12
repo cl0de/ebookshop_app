@@ -1,0 +1,36 @@
+
+<% if !@cart.nil? && @cart.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @cart.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<h3>Your Shopping Cart</h3>
+ 
+<% @cart.cart_items.each do |item| %>
+<tr>
+    
+    <td>
+        <%= link_to "#{item.book.title}" , book_path(item.book_id) %>
+    </td>
+    <td>
+        
+        <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency item.unit_price %></span></h4>
+    </td>
+    <td>
+      
+        <%= item.quantity %>
+    </td>
+    <td>
+       
+        <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency item.total_price %></span></h4>
+    </td>
+    <% end %>
+</tr>
+<tr>
+  
+  <h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency @cart.subtotal %></span></h4>
+</tr>

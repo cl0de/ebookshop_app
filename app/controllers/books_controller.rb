@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
+  #before_action :authenticate_user!
+  
   def index
+    #@books = Book.paginate(:page => params[:page], :per_page => 4)
+    
     @books = Book.all
+   # @cart_items = current_cart.cart_items.new
   end
+  
   def show
     @book = Book.find(params[:id])
   end
@@ -9,9 +15,6 @@ class BooksController < ApplicationController
   def new
     #load_data
     @book = Book.new
-    
-    #@all_authors = Author.all
-    #@author_book = @book.author_books.build
   end
   
   def create
@@ -31,14 +34,15 @@ class BooksController < ApplicationController
   end
   
    def update
-    @book = Book.new(book_params)
+    @book = Book.find(params[:id])
     
-    if @book.save
+    if @book.update_attributes(book_params)
       flash[:success] = "New Book added successfully."
-      redirect_to(:action => 'show', :id => @book.id)
+      
+redirect_to @book
     else
      # load_data
-    render('edit')
+    render'edit'
     end
    end
   def destroy
@@ -54,4 +58,5 @@ private
   #def load_data
   # @authors = Author.all
  # end
+  
 end

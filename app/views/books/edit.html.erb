@@ -13,7 +13,7 @@
         <%= f.text_field :title, class: 'form-control'  %>
       
         <%= f.label :authors %>
-        <%= f.collection_select(:author_id, Author.all, :id, :name, {:selected => 1}, {:prompt => true, :multiple => true, :size => 5}) %>
+        <%= f.collection_select(:author_id, Author.all, :id, :name, {:selected => 1}, {:prompt => true, :size => 5}) %>
 
         
         <%= f.label :isbn %>
@@ -31,7 +31,7 @@
         </span>
 
         
-        <%= f.submit "Enter new Book", class: "btn btn-primary" %>
+        <%= f.submit "Update Book", class: "btn btn-primary" %>
     
       <% end %>
 

@@ -162,5 +162,16 @@ aside {
   }
 }
 
-/* Tables */
+/* Shopping cart */
+
+.shopping_cart {
+  border-left: 3px solid #666;
+  background-color: $gray-darker;;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  
+  height: 100%;
+  padding: 5px 10px;
+}
 

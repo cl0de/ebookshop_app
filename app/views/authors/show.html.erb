@@ -1,12 +1,5 @@
 <% provide(:title, @author.first_name) %>
-<% if !flash[:success].blank? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      <%= flash[:success]%>.
-    </div>
-   
-  </div>
-<% end %>
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">

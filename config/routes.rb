@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+ 
   
-  #get 'authors/new'
-
-  root  'static_pages#home'
+   root  'static_pages#home'
+   devise_for :users
+  get 'carts/show'
+  #root 'books#index'
+ #resources :carts, only: [:show]
+  resources :cart_items, only: [:create, :update, :destroy]
+ 
   resources :authors
   resources :books
   match ':controller(/:action(/:id))', :via => [:get, :post]

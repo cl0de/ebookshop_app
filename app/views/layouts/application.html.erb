@@ -5,14 +5,32 @@
     <%= stylesheet_link_tag 'application', media: 'all',
                                            'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <% if request.ssl? %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% else %> 
+    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% end %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     
   </head>
   <body>
+    <div class="container">
     <%= render 'layouts/header' %>
    
-    <div class="container">
+    <p class="alert"> <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+     <% end %>
+     </p>
+    <div class="row">
+      <div class="col-xs-6">
+        <h1><%= link_to "My Store", 'books#index' %></h1>
+      </div>
+    </div>
+   <hr> 
+   
       <%= yield %>
     <%= render 'layouts/footer' %>
     </div>
