@@ -1,7 +1,8 @@
 class AuthorsController < ApplicationController
   
   def index
-    @authors = Author.paginate(page: params[:page])
+    
+    @authors = Author.paginate(page: params[:page], per_page: 4)
   end
   def show
     @author = Author.find(params[:id])

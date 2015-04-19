@@ -1,36 +1,19 @@
 class Cart < ActiveRecord::Base
-  has_many :cart_items
-  has_many :books, :through => :cart_items, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   
-  attr_reader :cart_items
-  
- 
-
-
-
-  #def finalize
-  #  self[:unit_price] = unit_price
-  #  self[:total_price] = quantity * self[:unit_price]
-  #end
-  #before_create :set_order_status
-  #before_save :update_subtotal
-  
-  def subtotal
-    cart_items.collect { |ci| ci.valid? ? (ci.quantity * ci.unit_price) : 0 }.sum
+  def add_book(book_id)
+		current_item = cart_items.find_by(book_id: book_id)
+		if current_item
+			current_item.quantity += 1
+			#current_item.quantity = current_item.quantity.blank? ? 1 : current_item.quantity + 1
+		else
+			current_item = cart_items.build(book_id: book_id)
+		end
+		  current_item
   end
+
+	def total_price
+		cart_items.to_a.sum { |item| item.total_price }
+	end
   
-# private
-    def cart_items
-      @cart_items
-    end
-
-    
-
-  #def set_order_status
-  #  self.order_status_id = 1
-  #end
-
-  #def update_subtotal
-  #  self[:subtotal] = subtotal
- # end
 end

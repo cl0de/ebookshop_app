@@ -1,23 +1,22 @@
-<% provide(:title, @book.authors.name) %>
+<% provide(:title, @book.title) %>
 <div class="row">
 
   <div>
-  
+        
           <h3><%= @book.title %></h3>
           <%= image_tag @book.picture.url if @book.picture? %>
-          <p><%= @book.authors.collect{|author| author.name }.join(', ') %></p>
-          <p><%= @book.isbn %></p>
+        <% @book.authors.each do |author| %>
+           <p><span>Author(s):</span><% author.name.join(', ') %></p>
+        <% end %>
+          <p>ISBN: <%= @book.isbn %></p>
           <p><%= @book.description %></p>
-          <p><%= @book.price %></p> 
+          <p>Price: <%= number_to_currency @book.price, :unit => '£' %></p> 
           
-          
-          
-       </tr>
-      </table>
-    
-    <%= link_to "Edit",{:action => 'edit', :id => @book.id}, :class => 'btn btn-default' %>  
-    <%= link_to 'Back to List', {:action => 'index'}, :class => 'btn btn-default' %>
-    
-    </section>
-  </aside>
-</div
+          <p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  @book), class: 'button radius' %></p>
+         
+          <%if signed_in?%>
+            <%= link_to "Edit",{:action => 'edit', :id => @book.id}, :class => 'button tiny secondary' %>  
+            <%= link_to 'Back to List', {:action => 'index'}, :class => 'button tiny secondary' %>
+          <%end%>
+           
+  </div>

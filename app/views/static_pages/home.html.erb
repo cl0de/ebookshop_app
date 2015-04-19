@@ -1,34 +1,42 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Online Book Shop</h1>
+<% provide(:title, 'Home') %>
 
-  <h2>
-    Welcome to the
-    <a href="http://www.railstutorial.org/">Online Book Shop</a> home page
-  </h2>
+    
 
-</div>
 <div class="row">
-  <div class="col-sm-12 col-md-3">Left side bar</div>
-  <div class="col-md-6">
-    <table>
-      <tr>
-        <td>Book Title</td>
-      </tr>
-      
-      <tr>
-        <td>Price</td>
-      </tr>
-    </table>
-    <div class="row">
-    <%= link_to 'Previous page', '#' %>
-    <%= link_to 'Next page', '#' %>
-    </div>
-  </div>
-  <div class="col-md-3">Right side bar</div>
+     <div class="small-12 columns">
+				<h1>Your Book Catalog</h1>
+		</div>
+</div>
+<hr >
+<div class="row">
+<% cache ['static_pages', Book.latest] do %>
+	<% @books.each do |book| %>
+	
+    
+		<% cache ['entry', book] do %>
+			<div class="small-4 columns">
+				<%= link_to(image_tag(book.picture_url(:thumb).to_s), cart_items_path(book_id: book), html_options = { method: :post } ) %>
+				<h3><%= book.title %></h3>
+				<p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
+				<p><span>ISBN:</span><%= book.isbn %></p>
+		</div>
+    <div class="small-4 columns">
+				<p><%= sanitize(book.description) %></p>
+				<div class='price_line'>
+					<span class='price'>Price: <%= number_to_currency(book.price,  :unit => '£') %></span>
+					<p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  book), class: 'button radius' %></p>
+				</div>
+		</div>
+		
+		
+		<% end %>
+		<hr>
+	<% end %>
+<% end %>
+
 </div>
   
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+
 
 
 

@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   
    root  'static_pages#home'
    devise_for :users
-  get 'carts/show'
-  #root 'books#index'
- #resources :carts, only: [:show]
-  resources :cart_items, only: [:create, :update, :destroy]
+  resources :carts
+  resources :cart_items
  
   resources :authors
   resources :books

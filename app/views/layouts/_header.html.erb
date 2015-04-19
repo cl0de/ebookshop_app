@@ -1,20 +1,25 @@
- <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "eBookShop", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Authors", authors_path %></li>
-            <li><%= link_to "Books", books_path %></li>
-            <li><%= link_to "About", :action =>'about' %></li>
-            <% if user_signed_in? %>
-            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-            <% else %>
-            <li><%= link_to('Login', new_user_session_path)  %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<header>
+ <nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "eBookShop", root_path, id: "logo" %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="active"><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Authors", authors_path %></li>
+      <li><%= link_to "Books", books_path %></li>
+      <li><%= link_to "About", :action =>'about' %></li>
+      <% if user_signed_in? %>
+      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+      <% else %>
+      <li><%= link_to('Login', new_user_session_path)  %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
+</header>
     
     

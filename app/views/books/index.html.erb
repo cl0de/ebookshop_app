@@ -1,51 +1,46 @@
 <% provide(:title, 'Books') %>
-
-
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
   <div class="row">
-    <h1>List of all Books</h1>
-  
+     <div class="small-12 columns">
+      <h1>List of all Books</h1>
+     </div>
   </div>
-   <div class="row"> 
-    
-        <%= link_to 'Add new Book', :action => 'new', :class => 'btn btn-default' %> 
-        
-      <hr><br />
-   </div>
-    <div class="row">
-       <div class="col-xs-6">
-    
-        
-          <% @books.each do |book| %>
-          
-            
-              <div><h3><%=link_to book.title, :action => 'show', :id => book %></h3></div>
-            
-              <div><span><%= image_tag book.picture.url(:thumb).to_s if book.picture? %></span></div>
-              
-              <p><span>ISBN:</span><%= book.isbn %></p>
-            
-              <p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
-      
-     
-            
-              <p><%=truncate( book.description, length: 80, omission: "...") %></p>
-              <h4 class="text-right">Price: </span><%= number_to_currency book.price, :unit => '£' %></p>
-              <p><%= button_to "Add to cart", cart_items_path( book_id:  book) %></p>
-              <% if user_signed_in? %>
-              <p class="actions"><%= link_to "View details", {:action => 'show', :id => book}, :class => 'btn btn-default' %> 
-                  <%= link_to "Edit",{:action => 'edit', :id => book.id}, :class => 'btn btn-default' %> 
-                  <%= link_to "Delete", book, method: :delete, data: {confirm: 'Are you sure you want to delete this book?'}, :class => 'btn btn-default' %>
-              </p>
-              <% end %>
-            <hr>
-        
-          <% end %>
-           
-        </div> 
-      <% if @cart %>
-      <div class="col-xs-6 text-right shopping_cart">
-          <h1 class="cart-text"><%= render 'carts/cart' %></h1>
-      </div>
-      <% end %>
+  <div class="right"><%= will_paginate %></div>
+  <% if user_signed_in? %>
+  <div class="row"> 
+    <%= link_to 'Add new Book', :action => 'new', :class => 'button tiny secondary' %> 
+   
+  </div>
+  <% end %>
+   <hr><br />
+  <% @books.each do |book| %>
+  <div class="row">
+    <div class="small-5 columns">
+        <div><h4><%=link_to book.title, :action => 'show', :id => book %></h4></div>
+        <div><span><%= image_tag book.picture.url(:thumb).to_s if book.picture? %></span></div>
+        <p><span>ISBN:</span><%= book.isbn %></p>
+        <p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
     </div>
+    <div class="small-6 small-offset-1 columns">
+        <p class="text-left"><%=truncate( book.description, length: 80, omission: "...") %></p>
+        <p class="text-right">Price: <%= number_to_currency book.price, :unit => '£' %></p>
+        <p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  book), class: 'button radius' %></p>
+    </div>
+      <% if user_signed_in? %>
+        <div class="text-left">
+          <%= link_to "View details", {:action => 'show', :id => book}, :class => 'button tiny secondary' %> 
+          <%= link_to "Edit",{:action => 'edit', :id => book.id}, :class => 'button tiny secondary' %> 
+          <%= link_to "Delete", book, method: :delete, data: {confirm: 'Are you sure you want to delete this book?'}, :class => 'button tiny secondary' %>
+        </div>
+      <% end %>
+   
+  </div>  
+   <hr>
+  <% end %>
+  <div class="right"><%= will_paginate %></div>
+  
+      
+  
     

@@ -5,36 +5,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@book, html: { multipart: true }) do |f| %>
-   
-        <%= render 'shared/messages_error', object: f.object  %>
-      
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control'  %>
-      
-        <%= f.label :authors %>
-        <%= f.collection_select(:author_id, Author.all, :id, :name, {:selected => 1}, {:prompt => true, :size => 5}) %>
-
-        
-        <%= f.label :isbn %>
-        <%= f.text_field :isbn, class: 'form-control'  %>
-        
-        <%= f.label :description %>
-        <%= f.text_area :description, :size => '40x10', class: 'form-control'  %>
-        
-        <%= f.label :price %>
-        <%= f.text_field :price, class: 'form-control'  %>
-        
-        <%= f.label :picture  %>
-        <span class="picture">
-        <%= f.file_field :picture %>
-        </span>
-
-        
-        <%= f.submit "Update Book", class: "btn btn-primary" %>
     
-      <% end %>
-
+    
+    <%= render 'form' %>
     
     <%= link_to '<< Back', :action => 'update' %>
     

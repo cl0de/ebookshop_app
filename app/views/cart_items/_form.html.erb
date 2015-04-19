@@ -1,0 +1,15 @@
+<%= form_for(@cart_item) do |f| %>
+  <%= render 'shared/messages_error', object: f.object  %>
+
+  <div class="field">
+    <%= f.label :book %><br>
+    <%= f.text_field :book %>
+  </div>
+  <div class="field">
+    <%= f.label :cart %><br>
+    <%= f.text_field :cart %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

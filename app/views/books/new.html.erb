@@ -3,49 +3,11 @@
 
 <h1>New Book</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@book, html: { multipart: true }) do |f| %>
+  <%= render 'form' %>
+
    
-        <%= render 'shared/messages_error', object: f.object  %>
-      
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-control'  %>
-      
-        <%= f.label :authors %>
-        <%= f.collection_select(:author_id, Author.all, :id, :name, {:selected => 1}, {:prompt => true, :multiple => true, :size => 5}) %>
-
-        
-        <%= f.label :isbn %>
-        <%= f.text_field :isbn, class: 'form-control'  %>
-        
-        <%= f.label :description %>
-        <%= f.text_area :description, :size => '40x10', class: 'form-control'  %>
-        
-        <%= f.label :price %>
-        <%= f.text_field :price, class: 'form-control'  %>
-        
-        <%= f.label :picture  %>
-        <span class="picture">
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'  %>
-        <%= f.hidden_field :picture_cache %>
-        </span>
-
-        
-        <%= f.submit "Enter new Book", class: "btn btn-default" %>
     
-      <% end %>
-<script type="text/javascript">
-  $('#book_picture').bind('change', function() {
-    size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
-    }
-  });
-</script>
-
-    
-    <%= link_to '<< Back', :action => 'index', :class => 'btn btn-default'%>
+  <%= link_to '<< Back', :action => 'index', :class => 'button tiny secondary'%>
     
   </div>
 </div>

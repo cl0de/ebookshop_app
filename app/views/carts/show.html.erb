@@ -1,3 +1,24 @@
-<div class="shopping-cart">
-  <%= render "cart" %>
+
+<h2>Your Cart</h2>
+<table>
+	<% @cart.cart_items.each do |item| %>
+	<tr>
+		<td><%= item.quantity %>&times;</td>
+		<td><%=link_to item.book.title, :action => "show",
+:controller => "books", :id => item.book.id %></td>
+		<td class="item_price"><%= number_to_currency(item.total_price, :unit => '£') %></td>
+	</tr>
+	<% end %>
+
+	<tr class="total_line">
+		<td colspan="2">Total</td>
+		<td class="total_cell"><%= number_to_currency(@cart.total_price, :unit => '£') %></td>
+	</tr>
+	
+</table>
+
+<div class="cart_links">
+	<%= button_to 'Back to Homepage', root_path, method: :get, :class => 'button tiny secondary' %></br>
+	<%= button_to 'Empty cart', @cart, method: :delete, 
+	  data: { confirm: 'About to empty this cart...are you sure?' }, :class => 'button tiny secondary' %>
 </div>

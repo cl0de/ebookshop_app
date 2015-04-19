@@ -1,39 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag 'application', media: 'all',
-                                           'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <% if request.ssl? %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% else %> 
-    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
-  <% end %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
-    
   </head>
+
   <body>
-    <div class="container">
-    <%= render 'layouts/header' %>
-   
-    <p class="alert"> <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-     <% end %>
-     </p>
-    <div class="row">
-      <div class="col-xs-6">
-        <h1><%= link_to "My Store", 'books#index' %></h1>
+      <%= render 'layouts/header' %>
+      <div class="row">
+        <div class="small-12 columns">
+ 
+           
+           <p> <% flash.each do |message_type, message| %>
+              <div data-alert class="alert-box <%= message_type %> radius"><%= message %></div>
+            <% end %></p>
+          
+          <%= yield %> 
+        </div>
+  
+          
+       
       </div>
-    </div>
-   <hr> 
    
-      <%= yield %>
-    <%= render 'layouts/footer' %>
+    <div class="row">
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
-
