@@ -66,25 +66,24 @@ p {
   line-height: 1.7em;
 }
 /* Navigation */
+/* Style the top bar dropdown elements*/
 
-$topbar-bg-color: #212d48;
+$topbar-dropdown-bg: $oil;
+$topbar-dropdown-link-color: $white;
+$topbar-dropdown-link-bg: $oil;
+$topbar-dropdown-link-bg-hover: $oil;
+$topbar-dropdown-link-weight: $font-weight-normal;
+$topbar-dropdown-toggle-size: 5px;
+$topbar-dropdown-toggle-color: $white;
+$topbar-dropdown-toggle-alpha: 0.4;
+
+// We use these to controls height and width styles.
+$f-dropdown-max-width: 200px;
+$f-dropdown-height: 200px;
+$f-dropdown-max-height: none;
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
 
 /* footer */
 
@@ -270,4 +269,10 @@ $input-error-message-bg-color: $alert-color;
 			margin-right: 3em;
 		}
 	}
+}
+
+/* header partial span*/
+
+.white {
+	color: #111;
 }

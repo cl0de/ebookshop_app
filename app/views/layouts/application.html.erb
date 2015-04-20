@@ -22,7 +22,7 @@
            <p> <% flash.each do |message_type, message| %>
               <div data-alert class="alert-box <%= message_type %> radius"><%= message %></div>
             <% end %></p>
-          
+          <p class="notice"><%= notice %></p>
           <%= yield %> 
         </div>
   

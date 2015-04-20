@@ -5,7 +5,7 @@
 
   
     <%= link_to 'Add new Author', :action => 'new' %>
-    <table class="table table-bordered">
+    <table class="table  table-bordered">
       <thead>
       <tr>
         <th width="200">First Name</th>
@@ -13,9 +13,10 @@
         <th width="200">Actions</th>
       </tr>
       </thead>
+      <% @authors.each do |author| %>
       <tbody>
       <tr>
-        <% @authors.each do |author| %>
+        
             <td><%= author.first_name %></td>
             <td><%= author.last_name %></td>
           <% if user_signed_in? %>
@@ -25,9 +26,10 @@
             </td>
       
           <% end %>
-        <% end %>
+        
       </tr>
       </tbody>
+      <% end %>
     </table>
 <%= will_paginate %>
    

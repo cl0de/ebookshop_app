@@ -95,7 +95,7 @@ $column-gutter: rem-calc(60);
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
-// $font-weight-normal: normal;
+ $font-weight-normal: normal;
 // $font-weight-bold: bold;
 
  $white       : #FFFFFF;
@@ -568,7 +568,7 @@ $column-gutter: rem-calc(60);
 // 09. Dropdown Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+ $include-html-button-classes: $include-html-classes;
 
 // We use these to set the color of the pip in dropdown buttons
 // $dropdown-button-pip-color: $white;
@@ -628,8 +628,8 @@ $column-gutter: rem-calc(60);
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
-// $form-label-font-weight: $font-weight-normal;
-// $form-label-line-height: 1.5;
+ $form-label-font-weight: $font-weight-normal;
+ $form-label-line-height: 1.5;
 // $form-label-font-color: scale-color($black, $lightness: 30%);
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
@@ -640,8 +640,8 @@ $column-gutter: rem-calc(60);
 // $input-focus-bg-color: scale-color($white, $lightness: -2%);
 // $input-border-color: scale-color($white, $lightness: -20%);
 // $input-focus-border-color: scale-color($white, $lightness: -40%);
-// $input-border-style: solid;
-// $input-border-width: 1px;
+ $input-border-style: solid;
+ $input-border-width: 1px;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: $gainsboro;
 // $input-disabled-cursor: $cursor-default-value;
