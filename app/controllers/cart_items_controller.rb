@@ -5,13 +5,13 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
   
   def index
-    #@cart_items = CartItem.all
+    @cart_items = CartItem.all
   end
   def show
     
   end
   def new
-    #@cart_item = CartItem.new
+    @cart_item = CartItem.new
   end
   def edit
   end

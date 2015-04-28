@@ -7,7 +7,11 @@
 				<h1>Your Book Catalog</h1>
 		</div>
 </div>
+<%= will_paginate  @books %>
 <hr >
+
+	
+
 <div class="row">
 <% cache ['static_pages', Book.latest] do %>
 	<% @books.each do |book| %>
@@ -33,7 +37,7 @@
 		<hr>
 	<% end %>
 <% end %>
-
+<%= will_paginate  @books %>
 </div>
   
 

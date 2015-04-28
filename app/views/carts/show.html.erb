@@ -1,11 +1,19 @@
 
 <h2>Your Cart</h2>
 <table>
+	<theader>
+		<tr>
+			<th>Book title</th>
+			<th>Quantity</th>
+			<th>Price</th>
+		</tr>
+	</theader>
+	<tbody>
 	<% @cart.cart_items.each do |item| %>
-	<tr>
-		<td><%= item.quantity %>&times;</td>
+	<tr class="<%= cycle :odd, :even %>">
 		<td><%=link_to item.book.title, :action => "show",
-:controller => "books", :id => item.book.id %></td>
+			:controller => "books", :id => item.book.id %></td>
+		<td><%= item.quantity %></td>
 		<td class="item_price"><%= number_to_currency(item.total_price, :unit => '£') %></td>
 	</tr>
 	<% end %>
@@ -14,11 +22,14 @@
 		<td colspan="2">Total</td>
 		<td class="total_cell"><%= number_to_currency(@cart.total_price, :unit => '£') %></td>
 	</tr>
-	
+	</tbody>
 </table>
 
+
 <div class="cart_links">
-	<%= button_to 'Back to Homepage', root_path, method: :get, :class => 'button tiny secondary' %></br>
+	<%= button_to 'Continue Shopping', root_path, method: :get, :class => 'button tiny secondary' %> <br />
 	<%= button_to 'Empty cart', @cart, method: :delete, 
-	  data: { confirm: 'About to empty this cart...are you sure?' }, :class => 'button tiny secondary' %>
-</div>
+	  data: { confirm: 'About to empty this cart...are you sure?' }, :class => 'button tiny secondary' %> <br />
+	<%= link_to 'Checkout', @cart.paypal_url(books_url), :class => 'button expand' %>
+</tr>
+

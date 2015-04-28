@@ -2,9 +2,11 @@ class StaticPagesController < ApplicationController
   def home
     @books = Book.order(:title)
   	@count = counter
+  	@books = Book.paginate(page: params[:page], per_page:  4)
   end
 
   def about
+  
   end
 
   def contact

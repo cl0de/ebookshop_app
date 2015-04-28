@@ -5,14 +5,14 @@
         
           <h3><%= @book.title %></h3>
           <%= image_tag @book.picture.url if @book.picture? %>
-        <% @book.authors.each do |author| %>
+          <% @book.authors.each do |author| %>
            <p><span>Author(s):</span><% author.name.join(', ') %></p>
-        <% end %>
+          <% end %>
           <p>ISBN: <%= @book.isbn %></p>
           <p><%= @book.description %></p>
           <p>Price: <%= number_to_currency @book.price, :unit => '£' %></p> 
           
-          <p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  @book), class: 'button radius' %></p>
+          <p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id: @book), class: 'button radius' %></p>
          
           <%if signed_in?%>
             <%= link_to "Edit",{:action => 'edit', :id => @book.id}, :class => 'button tiny secondary' %>  

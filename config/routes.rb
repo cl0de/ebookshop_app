@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
- 
-  
   root  'static_pages#home'
-   
-  devise_for :users
+  
+  #get ':controller(/:action(/:id))'
+  
   resources :carts
   resources :cart_items
- 
+  resources :payment_notifications, only: [:create]
   resources :authors
   resources :books
-  match ':controller(/:action(/:id))', :via => [:get, :post]
+  devise_for :users
+  match ':controller(/:action(/:id))', :via => [:get, :post] 
   
   #get 'static_pages/home'
 

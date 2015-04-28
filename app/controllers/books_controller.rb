@@ -3,8 +3,8 @@ class BooksController < ApplicationController
   
   def index
     @books = Book.paginate(:page => params[:page], per_page:  4)
+    @book = Book.all
   end
-  
   def show
     @book = Book.find(params[:id])
   
@@ -21,8 +21,7 @@ class BooksController < ApplicationController
       flash[:success] = "New Book created successfully."
       redirect_to(:action => 'index')
     else
-     # load_data
-    render 'new'
+     render 'new'
     end
   end
   

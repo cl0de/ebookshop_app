@@ -3,13 +3,13 @@ class CartsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
  
   def index
-    #@carts = Cart.all
+    @carts = Cart.all
   end
   def show
-    #@cart = Cart.find(cart_id)
+   #@cart = Cart.find(cart_id)
   end
   def new
-   # @cart = Cart.new
+    @cart = Cart.new
   end
   def edit
   end
@@ -35,6 +35,7 @@ class CartsController < ApplicationController
      redirect_to root_url, notice: 'Your cart is currently empty' 
   end
   
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
@@ -43,7 +44,7 @@ class CartsController < ApplicationController
 
     def invalid_cart
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to root_path, notice: 'Hey, that wasn\'t a cart'
+      redirect_to root_path, notice: "Hey, that wasn't a cart"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

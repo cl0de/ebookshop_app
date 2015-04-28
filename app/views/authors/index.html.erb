@@ -1,8 +1,9 @@
 <% provide(:title, 'Authors') %>
 
 <h1>List of all Authors</h1>
+<div class="pagination">
 <%= will_paginate %>
-
+</div>
   
     <%= link_to 'Add new Author', :action => 'new' %>
     <table class="table  table-bordered">
