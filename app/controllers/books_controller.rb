@@ -51,7 +51,8 @@ private
       @book = Book.find(params[:id])
   end
   def book_params
-      params.require(:book).permit(:title, :isbn, :description, :price, :authors, :picture)
+      params.require(:book).permit(:title, :isbn, :description, :price, :authors, :picture,
+         :picture_cache, {:author_ids => []})
   end
 
 end

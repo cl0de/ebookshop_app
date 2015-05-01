@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421213712) do
+ActiveRecord::Schema.define(version: 20150501224536) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "first_name"
@@ -21,9 +21,8 @@ ActiveRecord::Schema.define(version: 20150421213712) do
   end
 
   create_table "authors_books", id: false, force: :cascade do |t|
-    t.integer "author_id", null: false
-    t.integer "integer",   null: false
-    t.integer "book_id",   null: false
+    t.integer "author_id"
+    t.integer "book_id"
   end
 
   add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id"
@@ -57,6 +56,17 @@ ActiveRecord::Schema.define(version: 20150421213712) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.string   "ip_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "card_type"
+    t.date     "card_expires_on"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "payment_notifications", force: :cascade do |t|
