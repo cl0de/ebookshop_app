@@ -5,9 +5,8 @@
         
           <h3><%= @book.title %></h3>
           <%= image_tag @book.picture.url if @book.picture? %>
-          <% @book.authors.each do |author| %>
-           <p><span>Author(s):</span><% author.name.join(', ') %></p>
-          <% end %>
+          
+          <p><span>Author(s):</span><%= @book.authors.collect{|author| author.name }.join(', ') %></p>
           <p>ISBN: <%= @book.isbn %></p>
           <p><%= @book.description %></p>
           <p>Price: <%= number_to_currency @book.price, :unit => '£' %></p> 

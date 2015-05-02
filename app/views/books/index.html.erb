@@ -21,12 +21,8 @@
         <div><h4><%=link_to book.title, :action => 'show', :id => book %></h4></div>
         <div><span><%= image_tag book.picture.url(:thumb).to_s if book.picture? %></span></div>
         <p><span>ISBN:</span><%= book.isbn %></p>
+        <p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
         
-        <% book.authors.each do |author| %>
-          <h1>author: <%= author %></h1>
-        <% end %>
-        
-          <p><span>Author(s):</span><%= book.authors.first %></p>
       
         
     </div>
