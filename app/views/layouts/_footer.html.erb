@@ -1,13 +1,19 @@
-<footer class="footer">
-  <small>
-    The <a href="http://www.railstutorial.org/">Online Book Shop</a>
-    designed by <a href="http://www.michaelhartl.com/">Clotilde Uwamariya</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "Help", :controller => 'static_pages', :action => 'help' %></li>
-      <li><%= link_to "Contact", :controller => 'static_pages', :action => 'contact' %></li>
+<div>
+<footer class="row">
+  <div  id="footer" class="small-12 columns">
+  
+  <div>
+    <ul  class="inline-list">
+      <li><small>
+          The <a href="http://www.railstutorial.org/">Online Book Shop</a>
+          designed by <a href="http://www.michaelhartl.com/">Clotilde Uwamariya</a>
+        </small>
+      </li>
+      <li class="right"><%= link_to "Help", :controller => 'static_pages', :action => 'help' %></li>
+      <li class="right"><%= link_to "Contact", :controller => 'static_pages', :action => 'contact' %></li>
       
     </ul>
-  </nav>
+  </div>
+  </div>
 </footer>
+</div>

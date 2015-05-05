@@ -1,24 +1,15 @@
 Rails.application.routes.draw do
   root  'static_pages#home'
-  
+  devise_for :users
   #get ':controller(/:action(/:id))'
-  
   resources :carts
   resources :cart_items
-  resources :payment_notifications, only: [:create]
   resources :authors
   resources :books
-  devise_for :users
+  
   match ':controller(/:action(/:id))', :via => [:get, :post] 
   
-  #get 'static_pages/home'
-
-  #get 'static_pages/about'
-
-  #get 'static_pages/contact'
-
-  #get 'static_pages/help'
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

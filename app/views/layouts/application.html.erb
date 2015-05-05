@@ -23,15 +23,28 @@
               <div data-alert class="alert-box <%= message_type %> radius"><%= message %></div>
             <% end %></p>
           
+    <div class="counter">
+      <% if @count.to_i > 5 %>
+				<p class="text-right">Currently viewing the catalog for the <%= pluralize(@count, 'time') %></p>
+			<% end %>
+    
+      <% if user_signed_in? %>
+        
+        <p class="text-left">Signed in as <%= current_user.email %>. Not you? 
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete %></p>
+      <% end %>
+    </div>
           <%= yield %> 
         </div>
   
           
        
       </div>
-   
+   <hr>
     <div class="row">
+      <div class="small-12 columns">
       <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>

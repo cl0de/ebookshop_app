@@ -8,7 +8,7 @@
      </div>
   </div>
   <div class="right"><%= will_paginate %></div>
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.admin? %>
   <div class="row"> 
     <%= link_to 'Add new Book', :action => 'new', :class => 'button tiny secondary' %> 
    
@@ -27,11 +27,11 @@
         
     </div>
     <div class="small-6 small-offset-1 columns">
-        <p class="text-left"><%=truncate( book.description, length: 80, omission: "...") %></p>
+        <p class="text-left"><%= sanitize(truncate( book.description, length: 80, omission: "...")) %></p>
         <p class="text-right">Price: <%= number_to_currency book.price, :unit => '£' %></p>
-        <p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  book), class: 'button radius' %></p>
+        <p class="right"><%= button_to "Add to cart", cart_items_path( book_id:  book), :class =>  "button radius"  %></p>
     </div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.admin? %>
         <div class="text-left">
           <%= link_to "View details", {:action => 'show', :id => book}, :class => 'button tiny secondary' %> 
           <%= link_to "Edit",{:action => 'edit', :id => book.id}, :class => 'button tiny secondary' %> 

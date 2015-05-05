@@ -1,44 +1,32 @@
 <% provide(:title, 'Home') %>
-
-    
-
 <div class="row">
      <div class="small-12 columns">
-				<h1>Your Book Catalog</h1>
-		</div>
+		<h1>Your Book Catalog</h1>
+	</div>
 </div>
 <%= will_paginate  @books %>
 <hr >
-
-	
-
-<div class="row">
 <% cache ['static_pages', Book.latest] do %>
-	<% @books.each do |book| %>
 	
-    
-		<% cache ['entry', book] do %>
-			<div class="small-4 columns">
-				<%= link_to(image_tag(book.picture_url(:thumb).to_s), cart_items_path(book_id: book), html_options = { method: :post } ) %>
-				<h3><%= book.title %></h3>
-				<p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
-				<p><span>ISBN:</span><%= book.isbn %></p>
-		</div>
-    <div class="small-4 columns">
-				<p><%= sanitize(book.description) %></p>
-				<div class='price_line'>
-					<span class='price'>Price: <%= number_to_currency(book.price,  :unit => '£') %></span>
-					<p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  book), class: 'button radius' %></p>
-				</div>
-		</div>
-		
-		
+	<% @books.each do |book| %>
+	<% cache ['entry', book] do %>
+
+		<ul class="products">
+				<li><%= link_to(image_tag(book.picture_url(:thumb).to_s), cart_items_path(book_id: book), html_options = { method: :post } ) %>
+				<h4><%= link_to book.title, :controller => 'books', :action => 'show', :id => book %></h4>
+				<p><span class='isbn'>ISBN:</span><%= book.isbn %></p>
+				<p class='desc'><%= sanitize(truncate( book.description, length: 80, omission: "...")) %></p>
+				<p><span class='price'>Price: </span><%= number_to_currency(book.price,  :unit => '£') %></p>
+				<p><span class='author'>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
+				<p class="text-right"><%= button_to "Add to cart", cart_items_path( book_id:  book), class: 'small button radius' %></p></li>
+			</ul>
+	
 		<% end %>
-		<hr>
+
 	<% end %>
 <% end %>
 <%= will_paginate  @books %>
-</div>
+
   
 
 

@@ -1,7 +1,8 @@
 class AuthorsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   
   def index
-  
     @authors = Author.paginate(page: params[:page], per_page: 10)
   end
   def show
@@ -40,7 +41,7 @@ class AuthorsController < ApplicationController
 
 
 private
-
+   
     def author_params
       params.require(:author).permit(:first_name, :last_name)
     end

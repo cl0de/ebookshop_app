@@ -1,17 +1,100 @@
 @import "foundation/components/buttons"; 
 @import "foundation/components/forms";
+@import "foundation/components/inline-lists";
+
+
 /* mixins, variables, etc. */
-
-$white       : #FFFFFF;
-$monsoon     : #777777;
-$charcoal    : #555555;
-$jet         : #222222;
-
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+// c. Global
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+ $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+
+ $font-weight-normal: normal;
+
+
+ $white       : #FFFFFF;
+ $ghost       : #FAFAFA;
+ $snow        : #F9F9F9;
+ $vapor       : #F6F6F6;
+ $white-smoke : #F5F5F5;
+ $silver      : #EFEFEF;
+ $smoke       : #EEEEEE;
+ $gainsboro   : #DDDDDD;
+ $iron        : #CCCCCC;
+ $base        : #AAAAAA;
+ $aluminum    : #999999;
+ $jumbo       : #888888;
+ $monsoon     : #777777;
+ $steel       : #666666;
+ $charcoal    : #555555;
+ $tuatara     : #444444;
+ $oil         : #333333;
+ $jet         : #222222;
+ $black       : #000000;
+
+
+ $alert-color: #f04124;
+ $body-font-family: $font-family-sans-serif;
+
+ $global-radius: 5px;
+
+ $include-html-type-classes: $include-html-classes;
+ $paragraph-font-size: 1rem;
+
+ $include-html-button-classes: $include-html-classes;
+ $button-bg-color: #FF9900;
+ $button-bg-hover: #FF0000;
+ $include-pagination-classes: $include-html-classes;
+
+ $pagination-height: rem-calc(30);
+ $pagination-margin: rem-calc(-5);
+ $pagination-li-float: $default-float;
+ $pagination-li-height: rem-calc(24);
+ $pagination-li-font-color: $jet;
+ $pagination-li-font-size: rem-calc(16);
+ $pagination-li-margin: rem-calc(5);
+
+ $pagination-link-pad: rem-calc(1 10 1);
+ $pagination-link-font-color: #FF9900;
+ $pagination-link-active-bg: $primary-color;
+ $pagination-link-current-active-bg: #248F24;
+
+
+ $include-html-table-classes: $include-html-classes;
+
+ $table-bg: #FFE0C2;
+
+ $table-border-size: 2px;
+ $table-border-color: $jet;
+
+ $table-head-font-size: rem-calc(20);
+ $table-row-padding: rem-calc(9 10);
+ 
+ $table-row-font-size: rem-calc(16);
+ $table-line-height: rem-calc(20);
+ $table-display: table-cell;
+
+ $include-html-top-bar-classes: $include-html-classes;
+
+ $topbar-bg: #FF9900 !default;
+ $topbar-height: rem-calc(60);
+ $topbar-margin-bottom: 0;
+ $topbar-title-weight: $font-weight-bold;
+ $topbar-title-font-size: rem-calc(30);
+
+
+ $topbar-link-font-size: rem-calc(20);
+ $topbar-link-hover-lightness: 10%; // Darken by 10%
+
+ $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+ $topbar-link-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+ $topbar-menu-link-font-size: rem-calc(15);
 
 
 /* universal */
@@ -21,7 +104,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 section {
@@ -42,7 +125,7 @@ textarea {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+  line-height: 1em;
 }
 
 h1 {
@@ -60,250 +143,58 @@ h2 {
   font-weight: normal;
   color: $monsoon;
 }
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-/* Navigation */
-/* Style the top bar dropdown elements*/
-
-$topbar-dropdown-bg: $oil;
-$topbar-dropdown-link-color: $white;
-$topbar-dropdown-link-bg: $oil;
-$topbar-dropdown-link-bg-hover: $oil;
-$topbar-dropdown-link-weight: $font-weight-normal;
-$topbar-dropdown-toggle-size: 5px;
-$topbar-dropdown-toggle-color: $white;
-$topbar-dropdown-toggle-alpha: 0.4;
-
-// We use these to controls height and width styles.
-$f-dropdown-max-width: 200px;
-$f-dropdown-height: 200px;
-$f-dropdown-max-height: none;
-
-/* header */
-
-
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
+h4 {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-bottom: 2px solid #FF9900;
+  text-align: left;
+ 
   color: $jet;
-  color: $monsoon;
-  a {
-    color: $charcoal;
-    &:hover {
-      color: $jet;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
+}
+
+
+
+#footer {
+   height:30px;
+   width:100%;
+   background:#ccc;
+}
+
+/* Buttons */
+
+
+.button {
+background-color: #FF9900;
+}
+
+ul.products{
+    display: inline-block;
     list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-/* Error message styling */
-
-$input-error-message-padding: rem-calc(6 9 9);
-$input-error-message-top: -1px;
-$input-error-message-font-size: rem-calc(12);
-$input-error-message-font-weight: $font-weight-normal;
-$input-error-message-font-style: italic;
-$input-error-message-font-color: $white;
-$input-error-message-bg-color: $alert-color;
-
-
-/* Shopping cart */
-
-.shopping_cart {
-  border-left: 3px solid #666;
-  color: $jet;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+    width: 300px;
+    vertical-align:top;
+    padding: 0;
+    margin-right: 15px;
+    margin-bottom: 15px;
   
-  height: 100%;
-  padding: 5px 10px;
 }
-#side {
-		float: left;
-		padding: 1em 2em;
-		width: 13em;
-		background: #141;
+ 
 
-		ul {
-			padding: 0;
-
-			li {
-				list-style: none;
-				color: $white;
-
-				a {
-					color: #bfb;
-					font-size: small;
-				}
-			}
-		}
-	}
-
-.products {
-	table {
-		border-collapse: collapse;
-	}
-
-	table tr td {
-		padding: 5px;
-		vertical-align: top;
-	}
-
-	.list_image {
-		width: 140px;
-		height: 160px;
-	}
-
-	.list_description {
-		width: 60%;
-
-		dl {
-			margin: 0;
-		}
-
-		dt {
-			color: #244;
-			font-weight: bold;
-			font-size: larger;
-		}
-
-		dd {
-			margin: 0;
-		}
-	}
-
-	.list_actions {
-		font-size: x-small;
-		text-align: right;
-		padding-left: 1em;
-	}
-	.list_line_even {
-		background: #e0f8f8;
-	}
-
-	.list_line_odd {
-		background: #f8b0f8;
-	}
-}
-.store {
-	h1 {
-		margin: 0;
-		padding-bottom: 0.5em;
-		font: 150% sans-serif;
-		color: #226;
-		border-bottom: 3px dotted #77d;
-	}
-
-	/* An entry in the store catalog */
-
-	.entry {
-		overflow: auto;
-		margin-top: 1em;
-		border-bottom: 1px dotted #77d;
-		min-height: 100px;
-
-		img {
-			width: 80px;
-			margin-right: 5px;
-			margin-bottom: 5px;
-			position: absolute;
-		}
-
-		h3 {
-			font-size: 120%;
-			font-family: sans-serif;
-			margin-left: 100px;
-			margin-top: 0;
-			margin-bottom: 2px;
-			color: #227;
-		}
-
-		p, div.price_line {
-			margin-left: 100px;
-			margin-top: 0.5em;
-			margin-bottom: 0.8em;
-
-			form, div {
-				display: inline;
-			}
-		}
-
-		.price {
-			color: #44a;
-			font-weight: bold;
-			margin-right: 3em;
-		}
-	}
+ul.products li{
+ padding: 10px;
+ 
 }
 
-/* header partial span*/
-
-.white {
-	color: #111;
+.price, .isbn, .author{
+ font-weight:bold;
 }
 
-/*  Grid */
-$column-gutter: rem-calc(60);
-
-/* 20. Pagination */
-
-
-.pagination{
-background: $white;
-cursor: default;
-height: 22px;
-a, span, em{
-padding: 0.2em 0.5em;
-display: block;
-float: left;
-margin-right: 1px;
-}
-.current {
-font-style: normal;
-font-weight: bold;
-background: #2e6ab1;
-color:$white;
-border: 1px solid #2e6ab1;
-}
+.desc, p.author{
+ font-size: 12px;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ text-align: justify;
 }
 
 
 
 
-
-
+@import 'foundation';

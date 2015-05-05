@@ -22,6 +22,7 @@ class Cart < ActiveRecord::Base
         return: return_url,
         invoice: id
         
+        
     }
      cart_items.each_with_index do |item, index|
         	values.merge!({
