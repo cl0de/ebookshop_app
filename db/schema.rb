@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505204037) do
+ActiveRecord::Schema.define(version: 20150504123550) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "authors", force: :cascade do |t|
     t.string   "first_name"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20150505204037) do
     t.integer "book_id"
   end
 
-  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id"
-  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id"
+  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id", using: :btree
+  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title",       limit: 255,                         null: false
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20150505204037) do
     t.datetime "updated_at"
   end
 
-  add_index "cart_items", ["book_id"], name: "index_cart_items_on_book_id"
-  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id"
+  add_index "cart_items", ["book_id"], name: "index_cart_items_on_book_id", using: :btree
+  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150505204037) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

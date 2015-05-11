@@ -14,7 +14,7 @@ class Book < ActiveRecord::Base
       validates :description, length: { minimum: 2, message: 'book title must be longer than 2 letters' }
       validates :price, numericality: { greater_than_or_equal_to: 0.01 }
       validates :isbn, format: { with: /[0-9\-xX]{13}/}, uniqueness: true, on: :create
-      validates :authors, presence: true
+      #validates :authors, presence: true
       validates :title, :description, :price, presence: true
     
     def self.latest

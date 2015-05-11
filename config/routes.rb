@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root  'static_pages#home'
   devise_for :users
-  #get ':controller(/:action(/:id))'
   resources :carts
   resources :cart_items
   resources :authors
