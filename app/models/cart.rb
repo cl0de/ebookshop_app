@@ -14,6 +14,7 @@ class Cart < ActiveRecord::Base
 	def total_price
 		cart_items.to_a.sum { |item| item.total_price }
 	end
+	
 	def paypal_url(return_url)
    values = {
         business: "uwaclode-facilitator@gmail.com",
@@ -21,8 +22,7 @@ class Cart < ActiveRecord::Base
         upload: 1,
         return: return_url,
         invoice: id
-        
-        
+  
     }
      cart_items.each_with_index do |item, index|
         	values.merge!({

@@ -22,9 +22,6 @@
         <div><span><%= image_tag book.picture.url(:thumb).to_s if book.picture? %></span></div>
         <p><span>ISBN:</span><%= book.isbn %></p>
         <p><span>Author(s):</span><%= book.authors.collect{|author| author.name }.join(', ') %></p>
-        
-      
-        
     </div>
     <div class="small-6 small-offset-1 columns">
         <p class="text-left"><%= sanitize(truncate( book.description, length: 80, omission: "...")) %></p>

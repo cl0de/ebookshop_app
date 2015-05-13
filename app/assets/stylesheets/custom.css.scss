@@ -91,7 +91,7 @@
 
  $topbar-link-font-size: rem-calc(20);
  $topbar-link-hover-lightness: 10%; // Darken by 10%
-
+ $topbar-link-bg-active: $primary-color !important;
  $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
  $topbar-link-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
  $topbar-menu-link-font-size: rem-calc(15);
@@ -105,6 +105,7 @@ html {
 
 body {
   padding-top: 0px;
+  
 }
 
 section {
@@ -153,13 +154,6 @@ h4 {
 }
 
 
-
-#footer {
-   height:30px;
-   width:100%;
-   background:#ccc;
-}
-
 /* Buttons */
 
 
@@ -178,7 +172,6 @@ ul.products{
   
 }
  
-
 ul.products li{
  padding: 10px;
  
@@ -193,8 +186,5 @@ ul.products li{
  font-family:Verdana, Arial, Helvetica, sans-serif;
  text-align: justify;
 }
-
-
-
 
 @import 'foundation';
